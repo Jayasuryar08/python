@@ -1,3 +1,11 @@
+def list_tasks():
+    tasks = load()
+    if not tasks:
+        print("No tasks yet.")
+        return
+    for t in tasks:
+        mark = "x" if t["done"] else " "
+        print(f"{t['id']}. [{mark}] {t['text']}")
 import json
 import os
 import sys
@@ -43,6 +51,8 @@ def main():
 
     if command == "add" and args:
         add(" ".join(args))
+    elif command == "list":
+        list_tasks()
     else:
         print(USAGE)
 
