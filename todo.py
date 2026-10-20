@@ -50,6 +50,15 @@ def mark_done(task_id):
             return
     print(f"Task {task_id} not found.")
 
+def delete(task_id):
+    tasks = load()
+    remaining = [t for t in tasks if t["id"] != task_id]
+    if len(remaining) == len(tasks):
+        print(f"Task {task_id} not found.")
+        return
+    save(remaining)
+    print(f"Deleted task {task_id}.")
+
 def main():
     if len(sys.argv) < 2:
         print(USAGE)
@@ -64,6 +73,8 @@ def main():
         list_tasks()
     elif command == "done" and args and args[0].isdigit():
         mark_done(int(args[0]))
+    elif command == "delete" and args and args[0].isdigit():
+        delete(int(args[0]))
     else:
         print(USAGE)
 
