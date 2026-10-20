@@ -11,3 +11,4 @@ python3 todo.py delete 1
 ```
 
 Tasks are saved in `tasks.json`.
+Deleted a line
