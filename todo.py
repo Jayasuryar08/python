@@ -40,6 +40,15 @@ def add(text):
     save(tasks)
     print(f"Added task {new_id}: {text}")
 
+def mark_done(task_id):
+    tasks = load()
+    for t in tasks:
+        if t["id"] == task_id:
+            t["done"] = True
+            save(tasks)
+            print(f"Marked task {task_id} as done.")
+            return
+    print(f"Task {task_id} not found.")
 
 def main():
     if len(sys.argv) < 2:
@@ -53,6 +62,8 @@ def main():
         add(" ".join(args))
     elif command == "list":
         list_tasks()
+    elif command == "done" and args and args[0].isdigit():
+        mark_done(int(args[0]))
     else:
         print(USAGE)
 
