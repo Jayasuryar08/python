@@ -10,6 +10,9 @@ python3 todo.py done 1
 python3 todo.py delete 1
 ```
 
+
 Tasks are saved in `tasks.json`
 added new line
-.
+
+Deleted a line
+
